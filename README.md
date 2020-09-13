@@ -2,6 +2,7 @@
 Simple script to manage/navigate C project using cscope, ctags, and vim in bash
 
 
+
 Command line options:
 
 -a <path/file> : add files/folder to consider 
@@ -13,6 +14,8 @@ Command line options:
 -fl <file>     : Use this file as list of files.
 
 -d             : Dont consider files in current directory
+
+
 
 
 This script creates file list: cscope.files
