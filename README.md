@@ -28,3 +28,6 @@ This script also creates a tree view of source files named: tree
 
 
 As an entry point, in cscope, select the option "Find this file"  and select the file tags
+
+
+Copy these files to /sbin, or /usr/sbin  or any folder which belongs to PATH list. and use it at any location.
