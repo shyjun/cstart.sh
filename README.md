@@ -39,27 +39,27 @@ If you opened vim on a file, and want to run cstart on top of it, add these belo
 
 function Saveall()
 
-    :wa!
+:wa!
 
 endfunction
 
 function CleanUpCstartDB()
 
-    call Saveall()
+call Saveall()
 
-    :autocmd! VimLeave * !delete_tag_list.sh
+:autocmd! VimLeave * !delete_tag_list.sh
 
 endfunction
 
 function CscopeLink()
 
-    call Saveall()
+call Saveall()
 
-    !cstart.sh -s
+!cstart.sh -s
 
-    :cs add cscope.out
+:cs add cscope.out
 
-    call CleanUpCstartDB()
+call CleanUpCstartDB()
 
 endfunction
 
