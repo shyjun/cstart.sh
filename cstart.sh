@@ -9,6 +9,7 @@ show_usage () {
     echo " -k                : dont delete db"
     echo " -fl <listfile>    : use this list of files"
     echo " -d                : dont consider files in current path"
+    echo " -s                : silent. Create db and exit"
     echo
     echo
     exit
@@ -22,6 +23,7 @@ retain_db=0
 fl_specified=0
 not_present_continue=0
 dont_consider_current_path_files=0
+silent=0
 rm -f more_files_list
 rm -f less_files_list
 rm -f more_tree
@@ -52,6 +54,10 @@ while [ "$#" -gt 0 ]; do
             ;;
         -k) retain_db=1
             echo "-k"
+            shift
+            ;;
+        -s) silent=1
+            echo "-s"
             shift
             ;;
         -ex) less_files=1
@@ -164,8 +170,16 @@ if [[ $more_files == 1 ]]; then
     rm -f more_tree
 fi
 
+echo "DB created..."
+
+if [[ $silent == 1 ]]; then
+    retain_db=1
+    silent_arg=-b
+fi
+
+
 echo "Starting cscope..."
-cscope -k -v -i cscope.files
+cscope -k -v -i cscope.files $silent_arg
 
 if [[ $retain_db == 0 ]]; then
     delete_tag_list.sh
